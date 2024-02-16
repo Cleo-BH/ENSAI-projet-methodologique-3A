@@ -1,0 +1,101 @@
+######################### Comparaisons méthodes cas 2 ##########################
+
+# 1) Définition du nombre de simulations #######################################
+
+n_simul <- 1000
+
+# 2) Evaluations par méthode ###################################################
+
+rm(ech_test,base)
+
+## a) HT sur les répondants ####################################################
+
+HT_sur_répondants <- erreur_methode(
+  data,
+  function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
+  function(ech){simulation_nrprop(ech)},
+  n,
+  n_simul,
+  function(ech){HT_repondants(ech)}
+)
+
+## b) Prédiction de Y via X - modèle linéaire ##################################
+
+Y_selon_X_linéaire <- erreur_methode(
+  data,
+  function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
+  function(ech){simulation_nrprop(ech)},
+  n,
+  n_simul,
+  function(ech){modele_lineaire(ech,base,Y~X)}
+)
+
+## c) Prédiction de Y via X - modèle homogène 2 strates ########################
+
+data$X_strate <- data$X
+base$X_strate <- base$X
+Y_selon_X_2_strates <- erreur_methode(
+  data,
+  function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
+  function(ech){simulation_nrprop(ech)},
+  n,
+  n_simul,
+  function(ech){modele_par_strate(ech,base,2)}
+)
+
+## d) Re pondération sans les modes ############################################
+
+Y_repondéré_sans_modes <- erreur_methode(
+  data,
+  function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
+  function(ech){simulation_nrprop(ech)},
+  n,
+  n_simul,
+  function(ech){sans_mode_GHR_scores(ech,10,R~X,"quantiles")}
+)
+
+## e) Re pondération des deux modes ############################################
+
+Y_repondéré_2_modes <- erreur_methode(
+  data,
+  function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
+  function(ech){simulation_nrprop(ech)},
+  n,
+  n_simul,
+  function(ech){modes_separes_GHR_scores(ech,10,Ri~X,Rt_noni~X,"quantiles")}
+)
+
+## f) Re pondération que pour le téléphone #####################################
+
+Y_repondéré_que_telephone <- erreur_methode(
+  data,
+  function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
+  function(ech){simulation_nrprop(ech)},
+  n,
+  n_simul,
+  function(ech){que_telephone_GHR_score(ech,10,Rt_noni~X,"quantiles")}
+)
+
+## g) Re pondération avec les modes ############################################
+
+Y_repondéré_avec_modes <- erreur_methode(
+  data,
+  function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
+  function(ech){simulation_nrprop(ech)},
+  n,
+  n_simul,
+  function(ech){avec_mode_GHR_score(ech,10,Ri~X, Rt~X,"quantiles")}
+)
+
+# 3) Mise en forme des résultats ###############################################
+
+base_resultats <- as.data.frame(rbind(HT_sur_répondants,
+                                      Y_selon_X_linéaire,
+                                      Y_selon_X_2_strates,
+                                      Y_repondéré_sans_modes,
+                                      Y_repondéré_2_modes,
+                                      Y_repondéré_que_telephone,
+                                      Y_repondéré_avec_modes))
+
+colnames(base_resultats) <- c("Biais","Variance","MSE","RMSE")
+base_resultats
