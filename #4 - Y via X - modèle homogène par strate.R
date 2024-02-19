@@ -1,14 +1,15 @@
 ############# Prédiction de Y par X - modèle homogène par strate ###############
 
 # Principe : On construit un modèle homogène par strate sur l'échantillon à 
-# partir des X puis on l'applique sur la base de sondage. La seule manière de 
-# construire les strates et de prendre les fractiles d'une unique variable 
-# X_strate (à coder).
+# partir des quantiles d'une variable X_strate (à coder) puis on l'applique sur 
+# la base de sondage.
 
-# Hypothèse : Non réponse aléatoire
+# Hypothèse : Non réponse ignorable
 # Besoin de connaître X pour tout le monde : Oui
-# Autres : Nécessite d'avoir codé X_strate dans la base de sondage et soit dans 
-# data (pour erreur_methode) soit dans l'échantillon.
+
+# Autres : Nécessite d'avoir codé X_strate dans la base de sondage et, soit 
+# dans data (pour erreur_methode), soit dans l'échantillon (pour une utilisation
+# ponctuelle de modele_par_strate sur un échantillon).
 
 modele_par_strate <- function(ech,base,n_strates){
   
