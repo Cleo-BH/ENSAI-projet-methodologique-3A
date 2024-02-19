@@ -78,6 +78,8 @@ correlation <- matrix(c(1, 0.8, 0.1, 0.7, 0.7, 0.5, 0.9,-0.9, 0,
                         -0.9, -0.8, 0, 0.5, 0.5,-0.9, 0.2, 1, 0.5,
                         0, -0.7, 0, 0, 0, 0,0, 0.5, 1), nrow = 9)
 
+#La matrice n'est pas définie positive donc on prend la matrice de corrélation
+#définie positive la plus proche : 
 library(Matrix)
 matrice_alternative <- nearPD(correlation, corr=TRUE)
 
