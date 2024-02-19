@@ -10,6 +10,7 @@ rm(ech_test)
 
 ## a) HT sur les répondants ####################################################
 
+set.seed(194)
 HT_sur_répondants <- erreur_methode(
   data,
   function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
@@ -21,6 +22,7 @@ HT_sur_répondants <- erreur_methode(
 
 ## b) Prédiction de Y via X - modèle linéaire ##################################
 
+set.seed(194)
 Y_selon_X_linéaire <- erreur_methode(
   data,
   function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
@@ -32,6 +34,7 @@ Y_selon_X_linéaire <- erreur_methode(
 
 ## c) Prédiction de Y via X - modèle homogène 2 strates ########################
 
+set.seed(194)
 data$X_strate <- data$X
 base$X_strate <- base$X
 Y_selon_X_2_strates <- erreur_methode(
@@ -45,6 +48,7 @@ Y_selon_X_2_strates <- erreur_methode(
 
 ## d) Re pondération sans les modes ############################################
 
+set.seed(194)
 Y_repondéré_sans_modes <- erreur_methode(
   data,
   function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
@@ -56,6 +60,7 @@ Y_repondéré_sans_modes <- erreur_methode(
 
 ## e) Re pondération des deux modes ############################################
 
+set.seed(194)
 Y_repondéré_2_modes <- erreur_methode(
   data,
   function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
@@ -67,6 +72,7 @@ Y_repondéré_2_modes <- erreur_methode(
 
 ## f) Re pondération que pour le téléphone #####################################
 
+set.seed(194)
 Y_repondéré_que_telephone <- erreur_methode(
   data,
   function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
@@ -78,6 +84,7 @@ Y_repondéré_que_telephone <- erreur_methode(
 
 ## g) Re pondération avec les modes ############################################
 
+set.seed(194)
 Y_repondéré_avec_modes <- erreur_methode(
   data,
   function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
@@ -89,6 +96,7 @@ Y_repondéré_avec_modes <- erreur_methode(
 
 ## h) Heckman 1 étape ##########################################################
 
+set.seed(194)
 Heckman_1_etape <- erreur_methode(
   data,
   function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
@@ -104,6 +112,7 @@ Heckman_1_etape <- erreur_methode(
 
 ## i) Heckman 2 étapes #########################################################
 
+set.seed(194)
 Heckman_2_etapes <- erreur_methode(
   data,
   function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
