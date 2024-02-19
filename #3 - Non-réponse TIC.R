@@ -1,12 +1,10 @@
 ################### Non-réponse dans le cas de l'exemple TIC ################### 
 
 # On reprend le code principal auquel on ajoute les conditions suivantes :
-# - Si U1 (défiance vis-à-vis d'internet, suit une N(0,1)) est supérieur à 
-# 1.2816 (si parmi les 10% les plus méfiants) aucune réponse par internet n'est
-# possible.
-# - Si U2 (score lié aux équipements, suit une N(0,1)) est inférieur à -1.2816
-# (si parmi les 10% les  moins bien équipés) aucune réponse par internet n'est 
-# possible.
+# - Si U1 est supérieur à 1.2816 (donc si l'individu est parmi les 10% les plus 
+# méfiants) aucune réponse par internet n'est possible.
+# - Si U2 est inférieur à -1.2816 (donc si l'individu est parmi les 10% les 
+# moins bien équipés) aucune réponse par internet n'est possible.
 
 
 simulation_nrTIC<- function(ech){
