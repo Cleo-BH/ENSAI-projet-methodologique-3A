@@ -1,12 +1,13 @@
 #################### Prédiction de Y par X - modèle ratio ######################
 
-# Principe : On construit un modèle ratio sur l'échantillon à partir des X puis 
-# on l'applique sur la base de sondage.
+# Principe : On construit un modèle ratio sur l'échantillon à partir de Ratio (à
+# coder) puis on l'applique sur la base de sondage.
 
 # Hypothèse : Non réponse aléatoire 
 # Besoin de connaître X pour tout le monde : Oui
-# Autres : Le modèle est Y~Ratio avec Ratio une variable qu'il faut construire 
-# sur l'échantillon et dans la base de sondage.
+# Autres : Nécessite d'avoir codé Ratio dans la base de sondage et, soit 
+# dans data (pour erreur_methode), soit dans l'échantillon (pour une utilisation
+# ponctuelle de modele_ratio sur un échantillon).
 
 modele_ratio <- function(ech, base){
   #On traite Ratio pour avoir seulement des valeurs strictement positives.
