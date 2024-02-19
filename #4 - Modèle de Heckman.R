@@ -1,15 +1,16 @@
 ############################## Modèle de Heckman ###############################
 
 # Principe : On utilise la fonction selection du package sampleSelection pour 
-# calculer les nouveaux poids avec un modèle de Heckman, estimé en une étape 
-# (méthode "ml") ou en deux étapes (méthode "2step"). Ce code s'appuie sur les 
-# travaux de L. Castell et P. Sillard, accessible sur le lien suivant :
+# mettre en place un modèle de Heckman et repondérer l'échantillon. Le modèle de
+# Heckman peut être estimé en une étape (méthode "ml") ou en deux étapes 
+# (méthode "2step"). Ce code s'appuie sur les travaux de L. Castell et de 
+# P. Sillard, accessible via le lien suivant :
 # https://github.com/InseeFrLab/NRC-heck-model
 
-# Instrument utilisé : On sépare l'échantillon en deux échantillons aléatoires, 
+# Instrument utilisé : On sépare l'échantillon en deux échantillons aléatoires : 
 # dans l'un des cas on propose de répondre uniquement par internet, et dans le 
 # second cas on propose le multimode séquentiel. L'instrument est alors
-# l'indicatrice du mode de collecte proposé. Tout est fait dans la fonction.
+# l'indicatrice du mode de collecte proposé.
 
 # Hypothèse : Non réponse non ignorable
 # Besoin de connaître X pour tout le monde : Oui
