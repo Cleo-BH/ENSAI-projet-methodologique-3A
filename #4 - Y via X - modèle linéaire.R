@@ -3,7 +3,7 @@
 # Principe : On construit un modèle linéaire sur l'échantillon à partir des X
 # puis on l'applique sur la base de sondage.
 
-# Hypothèse : Non réponse aléatoire
+# Hypothèse : Non réponse ignorable
 # Besoin de connaître X pour tout le monde : Oui
 
 modele_lineaire <- function(ech, base, formula){
