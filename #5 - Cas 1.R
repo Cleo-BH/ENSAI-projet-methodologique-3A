@@ -10,6 +10,7 @@ rm(ech_test)
 
 ## a) HT sur les répondants ####################################################
 
+set.seed(194)
 HT_sur_répondants <- erreur_methode(
   data,
   function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
@@ -21,6 +22,7 @@ HT_sur_répondants <- erreur_methode(
 
 ## b) Prédiction de Y via X - modèle linéaire ##################################
 
+set.seed(194)
 Y_selon_X_linéaire <- erreur_methode(
   data,
   function(taille_ech,data){creation_ech_SRS(taille_ech,data)},
@@ -32,6 +34,7 @@ Y_selon_X_linéaire <- erreur_methode(
 
 ## c) Prédiction de Y via X - modèle homogène 2 strates ########################
 
+set.seed(194)
 data$X_strate <- data$X
 base$X_strate <- base$X
 Y_selon_X_2_strates <- erreur_methode(
