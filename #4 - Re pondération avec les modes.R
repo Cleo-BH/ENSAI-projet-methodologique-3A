@@ -3,11 +3,12 @@
 # Principe : On estime la probabilité de réponse globale des individus à partir 
 # de leur probabilité de réponse par internet estimée et de leur probabilité de
 # réponse par téléphone estimée. On estime la probabilité de réponse par 
-# internet (variable Ri) sur tout l'échantillon à partir de X et en utilisant 
-# des groupes homogènes de réponse. On estime la probabilité de réponse par 
-# téléphone (variable Rt) sur les non-répondants internet à partir de X, on
-# en déduit une estimation pour les répondants internet et on utilise à nouveau 
-# des groupes homogènes de réponse. 
+# internet pour tout l'échantillon à partir de Ri et de X, et en utilisant des 
+# groupes homogènes de réponse. On estime la probabilité de réponse par téléphone 
+# pour les non-répondants internet à partir de Rt et X. On en déduit une
+# estimation pour les répondants internet et on utilise à nouveau des groupes
+# homogènes de réponse. 
+
 # On constitue des groupes homogènes de réponse avec la méthode des scores. Les 
 # groupes peuvent être constitués à l'aide des quantiles (méthode "quantiles"), 
 # par CAH (méthode "CAH") ou en utilisant l'algorithme des kmeans (méthode 
