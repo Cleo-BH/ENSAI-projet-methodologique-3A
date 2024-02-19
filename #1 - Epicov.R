@@ -65,16 +65,26 @@ def <- defData(def,
 
 # 3) Liens entre les variables #################################################
 
-correlation <- matrix(c(1, 0.8, 0.3, 0.7, 0.7, 0.5, 0.9, 0, 0,
-                        0.8, 1, 0.1, 0.7, 0.1, -0.3, 0.7, -0.8, -0.7, 
+correlation <- matrix(c(1, 0.6, 0.3, 0.7, 0.7, 0.5, 0.9, 0.6, 0.5,
+                        0.6, 1, 0.1, 0.7, 0.3, -0.3, 0.7, -0.8, -0.7, 
                         0.3, 0.1, 1, 0.7, 0, 0, -0.1, 0, 0,
-                        0.7, 0.7, 0.7, 1, 0.8, -0.4, 0.6, 0.5, 0.5,
-                        0.7, 0.1, 0, 0.8, 1, 0, 0.1, -0.1, -0.1,
-                        0.5, -0.3, 0, -0.4, 0, 1, 0.1, -0.3, 0,
-                        0.9, 0.7, -0.1, 0.6, 0.1, 0.1, 1, -0.5, -0.5,
-                        0, -0.8, 0, 0.5, -0.1, -0.3, -0.5, 1, 0.5,
-                        0, -0.7, 0, 0.5, -0.1, 0, -0.5, 0.5, 1), nrow = 9)
+                        0.7, 0.7, 0.7, 1, -0.8, -0.4, 0.4, 0.2, 0,
+                        0.7, 0.3, 0, -0.8, 1, 0.2, 0.2, -0.1, -0.1,
+                        0.5, -0.3, 0, -0.4, 0.2, 1, 0.1, -0.1, 0,
+                        0.9, 0.7, -0.1, 0.4, 0.2, 0.1, 1, -0.2, -0.2,
+                        0.6, -0.8, 0, 0.2, -0.1, -0.1, -0.2, 1, 0.5,
+                        0.5, -0.7, 0, 0, -0.1, 0, -0.2, 0.5, 1), nrow = 9)
 
+#On regarde si correlation est bien définie positive :
+valeurs_propres <- eigen(correlation)$values
+if(all(valeurs_propres > 0)) {
+  print("La matrice de corrélations est PD.")
+} else {
+  print("La matrice de corrélations n'est pas PD.")
+}
+
+#Ce n'est pas le cas alors on prend la matrice de corrélation définie positive 
+#la plus proche :
 library(Matrix)
 matrice_alternative <- nearPD(correlation, corr=TRUE)
 
