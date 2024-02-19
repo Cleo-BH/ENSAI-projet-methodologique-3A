@@ -1,4 +1,6 @@
 ############################# Echantillon par SRS ##############################
+# Principe : On tire un échantillon de n individus aléatoirement et sans remise,
+# puis on définit les poids (ici N/n).
 
 n<- 10000
 
